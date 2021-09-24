@@ -17,7 +17,7 @@ def solution(x, y, w, h):
 
     if (x_short < y_short):
         answer = x_short
-    else:
+    else:   
         answer = y_short
     return answer
 
