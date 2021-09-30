@@ -15,6 +15,7 @@ def solution(word):
             answer = i
         elif word_dict[i] == max:
             answer = "?"
+            
     print(answer)
     
     

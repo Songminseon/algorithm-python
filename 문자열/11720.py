@@ -1,7 +1,9 @@
 import sys
 
 num = int(sys.stdin.readline())
+
 num_dummy = sys.stdin.readline()
+
 sum = 0
 
 for i in range(num):
