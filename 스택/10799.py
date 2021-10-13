@@ -7,7 +7,6 @@ stack_list = []
 for i in pip_line:
     pip_list.append(i)
 
-
 sum = 0
 for i in range(len(pip_list)):
 
