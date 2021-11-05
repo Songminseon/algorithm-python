@@ -6,6 +6,7 @@
 # # num = int(sys.stdin.readline())
 # # cursor = len(text)
 
+
 # # for _ in range(num):
 # #     command = sys.stdin.readline().rstrip()
 

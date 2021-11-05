@@ -3,16 +3,12 @@ import sys
 def push(stack_list, value):
     stack_list.append(value)
 
-
 def pop(stack_list):
-
-
     if(len(stack_list)==0):
         print(-1)
     else:
         print(stack_list.pop())
     
-
 def size(stack_list):
     answer = len(stack_list)
     return answer

@@ -16,7 +16,7 @@ for i in range(len(pip_list)):
         if pip_list[i-1] == "(":
             stack_list.pop()
             sum += len(stack_list)
-        else:
+        else: #끄트머리
             stack_list.pop()
             sum +=1
 

@@ -38,12 +38,10 @@ result = [0] * num
 for i in range(num):
     current_top = top_list[i]
 
-    while stack_list and top_list[stack_list[-1]] < current_top: # 
+    while stack_list and top_list[stack_list[-1]] < current_top: # stack이 비거나 현재 탑이 더 작으면 멈춤
         stack_list.pop()
     if stack_list:
         result[i] = stack_list[-1] + 1
 
     stack_list.append(i)
-
 print(' '.join(map(str, result)))
-
