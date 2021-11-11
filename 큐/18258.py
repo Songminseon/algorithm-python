@@ -1,8 +1,7 @@
 import sys
-from collections import deque
 
 num = int(sys.stdin.readline())
-queue_list = deque()
+queue_list = []
 
 
 def push(num):
@@ -13,7 +12,7 @@ def pop():
     if len(queue_list) == 0:
         print(-1)
     else:
-        print(queue_list.popleft())
+        print(queue_list.pop(0))
 
 
 def front():

@@ -10,6 +10,7 @@ index = 0
 for i in range(n):
     n_list.append(i + 1)
 
+
 while len(n_list) > 0:
     index = (index + (k - 1)) % len(n_list)
     out_list.append(n_list.pop(index))
