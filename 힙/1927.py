@@ -13,3 +13,5 @@ for _ in range(num):
             print(heapq.heappop(myheap))
     else:
         heapq.heappush(myheap, number)
+
+print(myheap)
