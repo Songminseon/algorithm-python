@@ -11,6 +11,19 @@ for _ in range(num):
 count = len(myheap)
 sum = 0
 
+for i in range(count - 1):
+    if count == 1:
+        sum += 0
+        break
+    else:
+        value_1 = heapq.heappop(myheap)
+        value_2 = heapq.heappop(myheap)
+        total = value_1 + value_2
+        sum += total
+        myheap.append(total)
+
+print(sum)
+
 # for i in range(len(myheap)):
 
 #     if count == 1:
@@ -22,15 +35,3 @@ sum = 0
 #         else:
 #             value = heapq.heappop(myheap) * (count - i)
 #             sum += value
-
-for i in range(count - 1):
-    if count == 1:
-        sum += 0
-    else:
-        value_1 = heapq.heappop(myheap)
-        value_2 = heapq.heappop(myheap)
-        total = value_1 + value_2
-        sum += total
-        myheap.append(total)
-
-print(sum)
