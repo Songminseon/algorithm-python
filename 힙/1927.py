@@ -6,6 +6,7 @@ myheap = []
 
 for _ in range(num):
     number = int(sys.stdin.readline())
+    
     if number == 0:
         if len(myheap) == 0:
             print(0)
@@ -15,3 +16,5 @@ for _ in range(num):
         heapq.heappush(myheap, number)
 
 print(myheap)
+
+
