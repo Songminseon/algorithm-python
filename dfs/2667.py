@@ -1,45 +1,42 @@
 from collections import deque
 
-
-def getScore(x):
-    if x in ["a", "b"]:
-        return 1
-    elif x in ["c", "d", "e"]:
-        return 2
-    elif x in ["f", "g", "h"]:
-        return 3
-    elif x in ["i", "j", "k"]:
-        return 4
-    elif x in ["l", "m", "n"]:
-        return 5
-    elif x in ["o", "p", "q"]:
-        return 6
-    elif x in ["r", "s", "t"]:
-        return 7
-    elif x in ["u", "v", "w"]:
-        return 8
-    elif x in ["x", "y", "z"]:
-        return 9
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
 
 
-def countSubstrings(input_str):
-    answer = 0
-    comb_list = deque()
+def bfs(graph, a, b):
+    n = len(graph)
+    queue = deque()
+    queue.append((a, b))
+    graph[a][b] = 0
+    count = 1
 
-    for i in range(0, len(input_str)):  # 뽑기에서 시간초과, 메모리초과
-        for j in range(0, len(input_str) - i):
-            current = input_str[j : i + j + 1]
-            comb_list.append(current)
-
-    while comb_list:
-        sum = 0
-        v = comb_list.popleft()
-        for i in v:
-            sum += getScore(i)
-        if sum % len(v) == 0:
-            answer += 1
-
-    return answer
+    while queue:
+        x, y = queue.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if nx < 0 or nx >= n or ny < 0 or ny >= n:
+                continue
+            if graph[nx][ny] == 1:
+                graph[nx][ny] = 0
+                queue.append((nx, ny))
+                count += 1
+    return count
 
 
-print(countSubstrings("asdaskdjzzzzzzzzzzzzzzzzzz"))
+n = int(input())
+graph = []
+for i in range(n):
+    graph.append(list(map(int, input())))
+
+cnt = []
+for i in range(n):
+    for j in range(n):
+        if graph[i][j] == 1:
+            cnt.append(bfs(graph, i, j))
+
+cnt.sort()
+print(len(cnt))
+for i in range(len(cnt)):
+    print(cnt[i])
