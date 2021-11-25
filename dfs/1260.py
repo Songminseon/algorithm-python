@@ -1,41 +1,40 @@
-n = int(input())
-graph = []
-num = []
+from collections import deque
+import sys
 
-for i in range(n):
-    graph.append(list(map(int, input())))
-
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0, 0]
+read = sys.stdin.readline
 
 
-def DFS(x, y):
-    if x < 0 or x >= n or y < 0 or y >= n:
-        return False
-
-    if graph[x][y] == 1:
-        global count
-        count += 1
-        graph[x][y] = 0
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            DFS(nx, ny)
-        return True
-    return False
+def bfs(v):
+    q = deque()
+    q.append(v)
+    visit_list[v] = 1
+    while q:
+        v = q.popleft()
+        print(v, end=" ")
+        for i in range(1, n + 1):
+            if visit_list[i] == 0 and graph[v][i] == 1:
+                q.append(i)
+                visit_list[i] = 1
 
 
-count = 0
-result = 0
+def dfs(v):
+    visit_list2[v] = 1
+    print(v, end=" ")
+    for i in range(1, n + 1):
+        if visit_list2[i] == 0 and graph[v][i] == 1:
+            dfs(i)
 
-for i in range(n):
-    for j in range(n):
-        if DFS(i, j) == True:
-            num.append(count)
-            result += 1
-            count = 0
 
-num.sort()
-print(result)
-for i in range(len(num)):
-    print(num[i])
+n, m, v = map(int, read().split())
+
+graph = [[0] * (n + 1) for _ in range(n + 1)]
+visit_list = [0] * (n + 1)
+visit_list2 = [0] * (n + 1)
+
+for _ in range(m):
+    a, b = map(int, read().split())
+    graph[a][b] = graph[b][a] = 1
+
+dfs(v)
+print()
+bfs(v)
