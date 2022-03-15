@@ -1,21 +1,20 @@
-n, m = map(int, input().split())
+import sys
 
-s = []
+n, m = map(int, sys.stdin.readline().split())
+
+num_list = []
 
 
-def f():
-    if len(s) == m:
-        print(" ".join(map(str, s)))
+def dfs():
+    if len(num_list) == m:
+        print(" ".join(map(str, num_list)))
         return
 
     for i in range(1, n + 1):
-        if i in s:
-            continue
-        s.append(i)
-        print(s, "test", i, "i", "\n")
-        f()
-        s.pop()
-        print("pop!, \n")
+        if i not in num_list:
+            num_list.append(i)
+            dfs()
+            num_list.pop()
 
 
-f()
+dfs()
