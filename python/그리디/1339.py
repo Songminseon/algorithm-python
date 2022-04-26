@@ -1,26 +1,32 @@
+from re import A
 import sys
 
-t_num = int(sys.stdin.readline())
+n = int(sys.stdin.readline())
+value_list = []
+value_dict = {}
 
-for _ in range(t_num):
-    people_num = int(sys.stdin.readline())
-    rank = []
-    count = 1
+for _ in range(n):
+    value = sys.stdin.readline()
+    value_list.append(value.strip())
 
-    for _ in range(people_num):
-        people_rank = list(map(int, sys.stdin.readline().split()))
-        rank.append(people_rank)
+for i in range(n):
+    value = value_list[i]
+    value_length = len(value)
+    for j in range(value_length):
+        alpabet = value[j]
+        digit = value_length - j - 1
+        if alpabet not in value_dict:
+            value_dict[alpabet] = 10**digit
+        else:
+            value_dict[alpabet] = value_dict[alpabet] + 10**digit
 
-    rank.sort()
-    standard = rank[0][1]
+value_dict = sorted(value_dict.items(), key=lambda item: item[1], reverse=True)
 
-    for i in range(people_num):
-        second_rank = rank[i][1]
+sum = 0
+start = 9
 
-        # 자격o
-        if standard > second_rank:
-            count += 1
-            standard = second_rank
-        # 자격x
+for _, j in value_dict:
+    sum += start * j
+    start -= 1
 
-    print(count, "answer")
+print(sum)
