@@ -13,6 +13,7 @@ def solution(n, info):
         return s
 
     def dfs(idx, left, ryan):
+        print(idx, left, ryan, "check dfs")
         global answer, result
         if idx == -1 and left:
             return
